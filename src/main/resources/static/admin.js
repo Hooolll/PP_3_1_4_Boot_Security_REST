@@ -1,7 +1,7 @@
 let allUsers;
 let allRoles;
 
-fetch('/rest/roles').then(
+fetch('http://localhost:8080/rest/roles').then(
     res => {
         res.json().then(
             roles => {
@@ -11,7 +11,7 @@ fetch('/rest/roles').then(
     }
 )
 
-fetch('/rest/users').then(
+fetch('http://localhost:8080/rest/users').then(
     res => {
         res.json().then(
             data => {
@@ -43,7 +43,7 @@ function createTable(data) {
     document.getElementById("usersTableBody").innerHTML = temp;
 }
 
-fetch('/rest/user').then(
+fetch('http://localhost:8080/rest/user').then(
     res => {
         res.json().then(
             data => {
@@ -64,7 +64,7 @@ fetch('/rest/user').then(
         )
     }
 )
-fetch('/rest/roles').then(
+fetch('http://localhost:8080/rest/roles').then(
     res => {
         res.json().then(
             roles => {
@@ -101,7 +101,7 @@ $('#addUserBtn').click(function () {
             })
         }
     })
-    fetch('/rest/users', {
+    fetch('http://localhost:8080/rest/users', {
         method: 'POST',
         body: JSON.stringify(newUser),
         headers: {'Content-Type': 'application/json'}
@@ -160,7 +160,7 @@ $('#editUserBtn').click(function () {
         }
     })
     console.log(edit)
-    fetch('/rest/users/' + id, {
+    fetch('http://localhost:8080/rest/users' + id, {
         method: 'PUT',
         body: JSON.stringify(edit),
         headers: {'Content-Type': 'application/json'}
@@ -188,7 +188,7 @@ $('#delUserBtn').click(function () {
     let id = document.getElementById("idDelModal").value;
     $('#deleteModal').modal('hide');
 
-    fetch('/rest/users/' + id, {method: 'DELETE'})
+    fetch('http://localhost:8080/rest/users' + id, {method: 'DELETE'})
         .then(res => {
             if (res.ok) {
                 document.getElementById(id).remove();

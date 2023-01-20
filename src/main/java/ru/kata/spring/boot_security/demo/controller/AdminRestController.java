@@ -1,5 +1,6 @@
 package ru.kata.spring.boot_security.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.parameters.P;
@@ -14,11 +15,14 @@ import java.security.Principal;
 import java.util.List;
 
 
+@CrossOrigin
 @RestController
-@RequestMapping("/rest/")
+@RequestMapping("/rest")
 public class AdminRestController {
     private final UserService userService;
     private final RoleService roleService;
+
+    @Autowired
     public AdminRestController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;

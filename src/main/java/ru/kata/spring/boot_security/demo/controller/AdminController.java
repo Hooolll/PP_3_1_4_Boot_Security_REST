@@ -12,12 +12,16 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 import java.security.Principal;
 
 
+
+
+@CrossOrigin
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
     private final UserService userService;
     private final RoleService roleService;
+
 
     @Autowired
     public AdminController(UserService userService, RoleService roleService) {
