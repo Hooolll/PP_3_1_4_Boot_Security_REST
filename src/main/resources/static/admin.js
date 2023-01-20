@@ -160,7 +160,7 @@ $('#editUserBtn').click(function () {
         }
     })
     console.log(edit)
-    fetch('http://localhost:8080/rest/users' + id, {
+    fetch('http://localhost:8080/rest/users/' + id, {
         method: 'PUT',
         body: JSON.stringify(edit),
         headers: {'Content-Type': 'application/json'}
@@ -188,7 +188,7 @@ $('#delUserBtn').click(function () {
     let id = document.getElementById("idDelModal").value;
     $('#deleteModal').modal('hide');
 
-    fetch('http://localhost:8080/rest/users' + id, {method: 'DELETE'})
+    fetch('http://localhost:8080/rest/users/' + id, {method: 'DELETE'})
         .then(res => {
             if (res.ok) {
                 document.getElementById(id).remove();
